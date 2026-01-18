@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나의 포트폴리오</title>
+    <style>
+        /* 기본 스타일 */
+        body { margin: 0; display: flex; font-family: sans-serif; color: #333; }
+        
+        /* 좌측 사이드바 목차 */
+        nav { 
+            width: 200px; height: 100vh; position: fixed; 
+            border-right: 1px solid #eee; padding: 40px 20px; 
+        }
+        nav h1 { font-size: 1.1rem; margin-bottom: 40px; }
+        .menu-btn { 
+            display: block; background: none; border: none; 
+            padding: 10px 0; cursor: pointer; color: #888; font-size: 0.95rem; 
+        }
+        .menu-btn.active { color: #000; font-weight: bold; }
+
+        /* 우측 메인 공간 */
+        main { margin-left: 240px; padding: 40px; width: 100%; }
+        .section { display: none; }
+        .section.active { display: block; }
+
+        /* 작품 스타일: 하나씩 크게 */
+        .work-item { margin-bottom: 100px; max-width: 900px; }
+        .work-item img { width: 100%; height: auto; background: #f5f5f5; }
+        .work-title { font-size: 1.2rem; font-weight: bold; margin: 15px 0 5px 0; }
+        .work-desc { color: #666; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+<nav>
+    <h1>MY NAME</h1>
+    <button class="menu-btn active" onclick="showSection('works')">Works</button>
+    <button class="menu-btn" onclick="showSection('writing')">Writing</button>
+</nav>
+
+<main>
+    <section id="works-section" class="section active">
+        <div class="work-item">
+            <img src="https://via.placeholder.com/1200x800" alt="작품1">
+            <div class="work-title">작품 제목 01</div>
+            <div class="work-desc">작품에 대한 설명을 이곳에 적으세요. 엔터를 치면 줄바꿈이 됩니다.</div>
+        </div>
+        <div class="work-item">
+            <img src="https://via.placeholder.com/1200x800" alt="작품2">
+            <div class="work-title">작품 제목 02</div>
+            <div class="work-desc">두 번째 작품에 대한 설명입니다.</div>
+        </div>
+    </section>
+
+    <section id="writing-section" class="section">
+        <h2>Writing</h2>
+        <p>자유롭게 글을 올리는 카테고리입니다.</p>
+    </section>
+</main>
+
+<script>
+    function showSection(name) {
+        // 모든 섹션 숨기기
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        // 모든 버튼 흐리게
+        document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
+        
+        // 선택한 것만 보이기
+        document.getElementById(name + '-section').classList.add('active');
+        event.target.classList.add('active');
+        window.scrollTo(0, 0);
+    }
+</script>
+
+</body>
+</html>
